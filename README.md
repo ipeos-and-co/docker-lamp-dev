@@ -48,9 +48,8 @@ You can create a custom `docker-compose.yml` file for your project, by setting e
 2. Start the lamp container linked with MariaDB and PHPMyAdmin using `run.sh`
 
 Now that the LAMP server’s running, visit with your Web browser :
-1. http://127.0.0.1:8007/ for PHP7 environment,
-2. http://127.0.0.1:8005/ for PHP5 environment, and
-3. http://127.0.0.1:8888/ to use PHPMyAdmin.
+1. http://127.0.0.1:8000/ for PHP environment,
+2. http://127.0.0.1:8888/ to use PHPMyAdmin.
 
 ### Run
 In order to (re)start the environment, use the [`run.sh`](run.sh) script.
