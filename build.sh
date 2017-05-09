@@ -10,17 +10,17 @@ if [[ -z "$VERSION" ]]; then
 fi
 
 if [ $VERSION = "latest" ]; then
-  docker build --no-cache=true -t $TARGET php7
+  docker build -t $TARGET php7
   exit 1;
 fi
 
 if [ $VERSION = "php7" ]; then
-  docker build --no-cache=true -t $TARGET php7
+  docker build -t $TARGET php7
   exit 1;
 fi
 
 if [ $VERSION = "php5" ]; then
-  docker build --no-cache=true -t $TARGET php5
+  docker build -t $TARGET php5
   exit 1;
 fi
 

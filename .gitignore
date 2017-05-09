@@ -12,6 +12,7 @@
 *.DS_Store
 Thumbs.db
 
-# Specific to ansible
+# Other
 *.retry
 credentials
+docker-compose.yml

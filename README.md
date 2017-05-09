@@ -16,24 +16,8 @@ Automated builds of the image are available on [Dockerhub](https://hub.docker.co
 ```bash
 $ docker pull ipeos/lamp-dev:latest
 ```
-## Run Simple PHP Website Without Database
 
-```bash
-docker run -p 8888:80 -v /home/user/public_html:/var/www/html --name lamp ipeos/lamp-dev:latest
-```
-Now that the LAMP server’s running, visit http://127.0.0.1:8888/ with your Web browser.
-
-The site's PHP and static files are directly accessible in the local volume you mounted as `/var/www/html` in the lamp container.
-
-## Run PHP Website With MariaDB or MySQL
-
-The quickest way to get started is using  [docker-compose](https://docs.docker.com/compose/).
-
-```bash
-docker run -p 8888:80 -v /home/user/public_html:/var/www/html --link some-mysql:mysql --name lamp ipeos/lamp-dev:latest
-```
-
-### Available environment vars
+## Environment vars availables
 
 Some vars can upgrade the `php.ini`
 
@@ -44,6 +28,44 @@ Some vars can upgrade the `php.ini`
 - `PHP_MEMORY_LIMIT`: `256M`
 - `PHP_EXPOSE_PHP`: `Off`
 - `PHP_TIMEZONE`: `UTC`
+
+## Run Simple PHP Website Without Database
+
+```bash
+docker run -p 8888:80 -v /home/user/public_html:/var/www/html --name lamp ipeos/lamp-dev:latest
+```
+Now that the LAMP server’s running, visit http://127.0.0.1:8888/ with your Web browser.
+
+The site's PHP and static files are directly accessible in the local volume you mounted as `/var/www/html` in the lamp container.
+
+## Use Docker Compose to build LAMP environment
+
+The quickest way to get started is using  [docker-compose](https://docs.docker.com/compose/).
+
+You can create a custom `docker-compose.yml` file for your project, by setting environment variables and running the script `run.sh`:
+
+1. edit `docker-compose.env`
+2. Start the lamp container linked with MariaDB and PHPMyAdmin using `run.sh`
+
+Now that the LAMP server’s running, visit with your Web browser :
+1. http://127.0.0.1:8007/ for PHP7 environment,
+2. http://127.0.0.1:8005/ for PHP5 environment, and
+3. http://127.0.0.1:8888/ to use PHPMyAdmin.
+
+### Run
+In order to (re)start the environment, use the [`run.sh`](run.sh) script.
+```bash
+$ ./run.sh
+```
+The environment is started as daemon. So it will be restarted on the workstation reboot.
+
+### Stop
+In order to stop the environment, use the [`stop.sh`](stop.sh) script.
+```bash
+$ ./stop.sh
+```
+
+All containers will be removed and recreated on then next run.
 
 ## Contributing
 
