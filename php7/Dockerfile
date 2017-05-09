@@ -56,9 +56,6 @@ WORKDIR /var/www/html
 
 EXPOSE 80
 
-# install the entrypoint
 COPY ./entrypoint.sh /
 
-RUN /entrypoint.sh
-
-CMD ["apache2ctl", "-DFOREGROUND"]
+ENTRYPOINT ["/entrypoint.sh"]
