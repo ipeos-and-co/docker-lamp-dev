@@ -55,6 +55,9 @@ ENV PHP_POST_MAX_SIZE 2M
 ENV PHP_MEMORY_LIMIT 128M
 ENV PHP_EXPOSE_PHP Off
 ENV PHP_TIMEZONE UTC
+ENV ENABLE_HTACCESS On
+
+COPY ./apache-dir.conf /etc/apache2/conf-available/
 
 WORKDIR /var/www/html
 

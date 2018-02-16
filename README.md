@@ -29,6 +29,10 @@ Some vars can upgrade the `php.ini`
 - `PHP_EXPOSE_PHP`: `Off`
 - `PHP_TIMEZONE`: `UTC`
 
+Can enable or disable override by `htaccess`
+
+- `ENABLE_HTACCESS`: `On`
+
 ## Run Simple PHP Website Without Database
 
 ```bash

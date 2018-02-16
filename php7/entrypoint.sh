@@ -13,6 +13,10 @@ sed -i "s|^;date\.timezone \?=.*|date\.timezone = \${PHP_TIMEZONE}|g" /tmp/php.i
 envsubst < /tmp/php.ini.tpl > /etc/php/7.0/apache2/php.ini
 rm /tmp/php.ini.tpl
 
+if [ "$ENABLE_HTACCESS" = On ]; then
+  ln -s /etc/apache2/conf-available/apache-dir.conf /etc/apache2/conf-enabled
+fi
+
 echo "ServerName lamp-dev-php7" >> /etc/apache2/apache2.conf
 
 /usr/sbin/apache2ctl -DFOREGROUND
