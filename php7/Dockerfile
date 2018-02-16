@@ -1,6 +1,6 @@
 FROM ubuntu:xenial
 
-LABEL version="0.1"
+LABEL version="0.1.1"
 LABEL description="Apache2.4 PHP7"
 LABEL maintainer "laurent@ipeos.com"
 
@@ -31,6 +31,10 @@ RUN apt-get -y -q update \
     php7.0-xml \
     php7.0-zip \
     php7.0-gettext \
+    php7.0-intl \
+    php7.0-xsl \
+    php7.0-ldap \
+    php-pear \
     php-imagick \
     php-tcpdf \
     libapache2-mod-php7.0 \
@@ -41,6 +45,12 @@ RUN apt-get -y -q update \
   && rm /var/www/html/index.html
 
 RUN a2enmod php7.0
+
+RUN pecl install apcu
+
+RUN echo "extension = apcu.so" | tee -a /etc/php/7.0/mods-available/apcu.ini
+
+RUN ln -s /etc/php/7.0/mods-available/apcu.ini /etc/php/7.0/apache2/conf.d/30-apcu.ini
 
 ENV LANG=C
 
